@@ -15,6 +15,14 @@ import DriverOrderView from "./pages/DriverOrderView";
 import { CategoryProvider } from "./contexts/CategoryContext";
 import { CartProvider } from "./contexts/CartContext";
 
+// Merchant pages
+import MerchantLogin from "./pages/MerchantLogin";
+import MerchantLayout from "./components/merchant/MerchantLayout";
+import MerchantDashboard from "./pages/merchant/MerchantDashboard";
+import MerchantProducts from "./pages/merchant/MerchantProducts";
+import MerchantOrders from "./pages/merchant/MerchantOrders";
+import MerchantSettings from "./pages/merchant/MerchantSettings";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -34,6 +42,16 @@ const App = () => (
                 <Route path="driver" element={<DriverDashboard />} />
                 <Route path="driver/order/:id" element={<DriverOrderView />} />
               </Route>
+              
+              {/* Merchant Routes */}
+              <Route path="/merchant/login" element={<MerchantLogin />} />
+              <Route path="/merchant" element={<MerchantLayout />}>
+                <Route path="dashboard" element={<MerchantDashboard />} />
+                <Route path="products" element={<MerchantProducts />} />
+                <Route path="orders" element={<MerchantOrders />} />
+                <Route path="settings" element={<MerchantSettings />} />
+              </Route>
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
