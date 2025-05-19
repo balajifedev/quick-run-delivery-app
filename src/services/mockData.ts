@@ -1,5 +1,4 @@
-
-import { Store, Order, User } from "@/types";
+import { Store, Order, User, Driver } from "@/types";
 
 export const stores: Store[] = [
   {
@@ -270,30 +269,69 @@ export const userData: User = {
   orders: ["order1", "order2"]
 };
 
-// Helper function to filter stores by category
-export const getStoresByCategory = (categoryId: string): Store[] => {
-  if (categoryId === "all") {
-    return stores;
-  }
-  return stores.filter(store => store.category === categoryId);
+export const driverData: Driver = {
+  id: "driver1",
+  name: "John Doe",
+  email: "john.driver@example.com",
+  phone: "+1 555-123-4567",
+  vehicle: "Motorcycle",
+  vehicleNumber: "AB123CD",
+  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop",
+  status: 'online',
+  currentLocation: {
+    lat: 40.7128,
+    lng: -74.0060
+  },
+  rating: 4.8,
+  totalDeliveries: 247,
+  activeOrderId: "order1"
 };
 
-// Helper function to search stores
-export const searchStores = (query: string): Store[] => {
-  query = query.toLowerCase();
-  return stores.filter(
-    store => 
-      store.name.toLowerCase().includes(query) || 
-      store.type.toLowerCase().includes(query)
-  );
-};
-
-// Helper function to get store by ID
-export const getStoreById = (id: string): Store | undefined => {
-  return stores.find(store => store.id === id);
-};
-
-// Helper function to get featured stores
-export const getFeaturedStores = (): Store[] => {
-  return stores.filter(store => store.featured);
+export const getAvailableOrders = (): Order[] => {
+  return [
+    {
+      id: "order3",
+      storeId: "store3",
+      storeName: "MediQuick Pharmacy",
+      storeImage: "https://images.unsplash.com/photo-1617881770125-6fb0d039ecad?q=80&w=1471&auto=format&fit=crop",
+      status: "preparing",
+      items: [
+        {
+          id: "prod7",
+          name: "Pain Relief Tablets",
+          quantity: 1,
+          price: 7.99
+        }
+      ],
+      total: 7.99,
+      deliveryAddress: "789 Health St, New York, NY 10003",
+      createdAt: "2025-05-19T15:45:00",
+      estimatedDelivery: "2025-05-19T16:30:00"
+    },
+    {
+      id: "order4",
+      storeId: "store2",
+      storeName: "Burger Station",
+      storeImage: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1365&auto=format&fit=crop",
+      status: "preparing",
+      items: [
+        {
+          id: "prod5",
+          name: "Classic Cheeseburger",
+          quantity: 1,
+          price: 8.99
+        },
+        {
+          id: "prod6",
+          name: "French Fries",
+          quantity: 1,
+          price: 3.99
+        }
+      ],
+      total: 12.98,
+      deliveryAddress: "456 Food Ave, New York, NY 10002",
+      createdAt: "2025-05-19T15:30:00",
+      estimatedDelivery: "2025-05-19T16:15:00"
+    }
+  ];
 };

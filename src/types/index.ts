@@ -1,4 +1,3 @@
-
 export interface Store {
   id: string;
   name: string;
@@ -49,6 +48,24 @@ export interface Order {
       image: string;
     };
   };
+}
+
+export interface Driver {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  vehicle: string;
+  vehicleNumber: string;
+  image: string;
+  status: 'offline' | 'online' | 'busy';
+  currentLocation: {
+    lat: number;
+    lng: number;
+  };
+  rating: number;
+  totalDeliveries: number;
+  activeOrderId?: string;
 }
 
 export interface User {

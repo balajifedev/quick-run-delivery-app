@@ -10,6 +10,8 @@ import Layout from "./components/layout/Layout";
 import StoreDetails from "./pages/StoreDetails";
 import OrderTracking from "./pages/OrderTracking";
 import UserProfile from "./pages/UserProfile";
+import DriverDashboard from "./pages/DriverDashboard";
+import DriverOrderView from "./pages/DriverOrderView";
 import { CategoryProvider } from "./contexts/CategoryContext";
 import { CartProvider } from "./contexts/CartContext";
 
@@ -29,6 +31,8 @@ const App = () => (
                 <Route path="store/:id" element={<StoreDetails />} />
                 <Route path="order/:id" element={<OrderTracking />} />
                 <Route path="profile" element={<UserProfile />} />
+                <Route path="driver" element={<DriverDashboard />} />
+                <Route path="driver/order/:id" element={<DriverOrderView />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
