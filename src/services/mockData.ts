@@ -335,3 +335,43 @@ export const getAvailableOrders = (): Order[] => {
     }
   ];
 };
+
+// Add the missing exported functions
+
+/**
+ * Get stores by category
+ */
+export const getStoresByCategory = (category: string): Store[] => {
+  if (!category || category === 'all') {
+    return [...stores];
+  }
+  return stores.filter(store => store.category === category);
+};
+
+/**
+ * Get featured stores
+ */
+export const getFeaturedStores = (): Store[] => {
+  return stores.filter(store => store.featured === true);
+};
+
+/**
+ * Search stores by name or type
+ */
+export const searchStores = (term: string): Store[] => {
+  if (!term) {
+    return [...stores];
+  }
+  const searchTerm = term.toLowerCase();
+  return stores.filter(store => 
+    store.name.toLowerCase().includes(searchTerm) || 
+    store.type.toLowerCase().includes(searchTerm)
+  );
+};
+
+/**
+ * Get store by ID
+ */
+export const getStoreById = (id: string): Store | undefined => {
+  return stores.find(store => store.id === id);
+};
